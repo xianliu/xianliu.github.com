@@ -20,10 +20,12 @@ function slideDiv(){
             if(_move){  
                 var x=e.pageX-_x;
                 $(".drag").css({left:x});
-                left = -x;
             }  
-        }).mouseup(function(){  
+        }).mouseup(function(e){  
         	_move=false;  
+
+        	var x=e.pageX-_x;
+        	left = -x;
 
 	        if(closeable == true) {
 				$(".drag").animate({
