@@ -1,50 +1,49 @@
 (function($) {
 	$("body").ready(function() {
-		slideDiv("slide");	
+		slideDiv();	
 	})
 })(jQuery);
 
-
-function slideDiv(str){
+function slideDiv(){
 	var screen_width = $(window).width();
 	var mid_screen = screen_width/2; 
 	var left;
 	var closeable = false;
-	
-	$("#"+str).mousedown(function(event){
-		var offset = $(this).offset(); 
-		_x=event.clientX-offset.left; 
-		
-		$("#"+str).mousemove(function(event){ 
-			_xx=event.clientX-_x; 
-			this.style.left=_xx+"px";
-			
-			left = -_xx;
-			
-		}); 
-	}); 
-	
-	$("#"+str).mouseup(function(){ 
-		$(this).unbind("mousemove");
-		
-		if(closeable == true) {
-			$("#"+str).animate({
-			    left: "-95%",
-			}, 100);
-			closeable = false;
-		} else {
-			if(left < mid_screen) {
-			 $("#"+str).animate({
-			    left: "0%",
-			  }, 100);
-			  closeable = true;
-			} else {
-				$("#"+str).animate({
+    var _move=false;
+    var _x;
+        $(".drag").mousedown(function(e){  
+            _move=true;  
+            _x=e.pageX-parseInt($(".drag").css("left")); 
+        });  
+
+        $(document).mousemove(function(e){  
+            if(_move){  
+                var x=e.pageX-_x;
+                $(".drag").css({left:x});
+                left = -x;
+            }  
+        }).mouseup(function(){  
+        	_move=false;  
+
+	        if(closeable == true) {
+				$(".drag").animate({
 				    left: "-95%",
 				}, 100);
-				closeable = false;	
+				closeable = false;
+			} else {
+				if(left < mid_screen) {
+				 $(".drag").animate({
+				    left: "0%",
+				  }, 100);
+				  closeable = true;
+				} else {
+					$(".drag").animate({
+					    left: "-95%",
+					}, 100);
+					closeable = false;	
+				}
 			}
-		}
-		
-	}); 
+
+      });  
+
 } 

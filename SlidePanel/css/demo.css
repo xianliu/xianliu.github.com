@@ -1,23 +1,28 @@
 body {
-	/*background-color: #333333;*/
-	overflow-x: hidden;
-}
-
-.win {
-	position: absolute;
-	top: 0px;
-	left: -95%;
-	width: 100%;
-	height: 100%;
-	z-index: 1000;
-	border: 1px solid #000;
-	box-shadow: 2px 0px 5px #000;
-	cursor: move;
-	padding-right:50px;
 	text-align: center;
-	background: #ffffff;
+	font-family: Arial;
 }
 
+.drag {
+	position:absolute;
+	width:100%;
+	height:100%;
+	border:1px solid #ddd;
+	background:#FBF2BD;
+	text-align:center;
+	padding:5px;
+	top:0px;
+	left:-95%;
+	cursor:move;
+	z-index: 1000;
+	box-shadow: 2px 0px 5px #000;
+	border-right: 1px solid #000;
+	opacity: 0.5;
+}
+
+.drag:hover {
+	opacity: 1;
+}
 
 
 
