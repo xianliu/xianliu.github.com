@@ -21,30 +21,34 @@ function slideDiv(){
                 var x=e.pageX-_x;
                 $(".drag").css({left:x});
             }  
-        }).mouseup(function(e){  
-        	_move=false;  
-
+        }).mouseup(function(e){ 
+        	
         	var x=e.pageX-_x;
         	left = -x;
 
-	        if(closeable == true) {
-				$(".drag").animate({
-				    left: "-95%",
-				}, 100);
-				closeable = false;
-			} else {
-				if(left < mid_screen) {
-				 $(".drag").animate({
-				    left: "0%",
-				  }, 100);
-				  closeable = true;
-				} else {
+        	if(_move == true) {
+		        if(closeable == true) {
 					$(".drag").animate({
 					    left: "-95%",
 					}, 100);
-					closeable = false;	
+					closeable = false;
+				} else {
+					if(left < mid_screen) {
+					 $(".drag").animate({
+					    left: "0%",
+					  }, 100);
+					  closeable = true;
+					} else {
+						$(".drag").animate({
+						    left: "-95%",
+						}, 100);
+						closeable = false;	
+					}
 				}
-			}
+        	}
+
+        	_move=false;  
+
 
       });  
 
