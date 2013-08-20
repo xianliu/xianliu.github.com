@@ -1,9 +1,9 @@
 (function($) {
 	$("document").ready(function() {
-		$(".dialog-container").fadeIn("slow");
+		$(".dialog-container").show();
 		
 		$(".float-button").click(function() {
-			$(".dialog-container").fadeIn("slow");	
+			$(".dialog-container").show();	
 		})
 		
 		$(".dialog .submit").click(function() {
@@ -11,7 +11,7 @@
 		});
 		
 		$(".dialog .cancel").click(function() {
-			$(this).closest(".dialog-container").fadeOut("slow");
+			$(this).closest(".dialog-container").hide();
 		})
 	}); 
 })(jQuery);
